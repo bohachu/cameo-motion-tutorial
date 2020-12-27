@@ -1,3 +1,7 @@
+== 2020-12-27 12:56 Bowen ==
+done 增添第一課的說明文字
+done 增添第一課的按鈕，切換標題 1 and 2
+
 == 2020-12-27 12:49 Bowen ==
 container 上下留白太多
 done <div class="row pt-0 pb-0">
