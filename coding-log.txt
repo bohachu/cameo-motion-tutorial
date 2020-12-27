@@ -1,3 +1,7 @@
+== 2020-12-27 12:49 Bowen ==
+container 上下留白太多
+done <div class="row pt-0 pb-0">
+
 == 20201227 1240 Bowen ==
 已經修改讓左下角課程文字 top align
 
