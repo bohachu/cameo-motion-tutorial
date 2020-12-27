@@ -1,0 +1,70 @@
+001 拖拉四個檔案到狗三八根目錄
+app-cameo-divergent-stacked-bars
+img
+lib
+scss
+
+002 在 index.html 引用 bootstrap
+<link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="scss/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+003 在 index.html 引用 amcharts 與 cameo-motion
+
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script
+      src="lib/v1/cameo-divergent-stacked-bars/cameo-divergent-stacked-bars.js"
+      type="module"
+    ></script>
+
+004 在 index.html 貼上圖表顯示原始碼
+    <div class="container">
+      <div class="row pb-5 pt-5">
+        <div class="col-md-4 pt-5 my-auto">
+          <img
+            src="img/index-icon/001-B-analytics.png"
+            style="width: 75px; height: 75px;"
+            alt="圖001左右比較圖-001-B-analytics"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          />
+          <h3 class="pt-3" data-aos="fade-up" data-aos-delay="100">
+            臺灣產業產值</br>與同期比較
+          </h3>
+          <p data-aos="fade-up" data-aos-delay="200">
+            產業季產值
+          </p>
+          <hr />
+          <p1 data-aos="fade-up" data-aos-delay="300">
+            針對半導體、顯示器、通訊、電子零組件、機械、汽機車、醫療器材、電子材料、石化、特化及新興能源等十一大產業之季產值進行比較。
+          </p1>
+          <div class="pt-1" data-aos="fade-up" data-aos-delay="400">
+            <update>2020.12.31 更新</update>
+          </div>
+        </div>
+        <div
+          class="col-md-8 pt-5 my-auto"
+          data-aos="fade-up"
+          data-aos-id="chart-1"
+        >
+          <cameo-divergent-stacked-bars
+            data="app-cameo-divergent-stacked-bars/data/data.csv"
+            meta="app-cameo-divergent-stacked-bars/data/meta.csv"
+          ></cameo-divergent-stacked-bars>
+        </div>
+      </div>
+    </div>
+
+005 下方 table 元件模板：未來利用 fork 自動化產生模板
+=> hanes ac 自動化
+

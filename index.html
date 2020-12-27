@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="scss/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Static Template</title>
+  </head>
+  <style>
+    /* Style the tab */
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+
+    /* Style the buttons that are used to open the tab content */
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+    }
+
+    /* Change background color of buttons on hover */
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current tablink class */
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+    .tabcontent {
+      animation: fadeEffect 1s; /* Fading effect takes 1 second */
+    }
+
+    /* Go from zero to full opacity */
+    @keyframes fadeEffect {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+        "Segoe UI Symbol";
+    }
+
+    #chartdiv {
+      width: 100%;
+      height: 550px;
+    }
+
+    h4 {
+      vertical-align: top;
+    }
+  </style>
+
+  <script>
+    function openCity(evt, cityName) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+  </script>
+
+  <body>
+    <!--amcharts-->
+    <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+    <script
+      src="lib/v1/cameo-divergent-stacked-bars/cameo-divergent-stacked-bars.js"
+      type="module"
+    ></script>
+
+
+    <div class="container">
+      <div class="row pb-5 pt-5">
+        <div class="col-md-4 pt-5">
+          <img
+            src="img/index-icon/001-B-analytics.png"
+            style="width: 75px; height: 75px;"
+            alt="圖001左右比較圖-001-B-analytics"
+            data-aos="fade-up"
+            data-aos-delay="0"
+          />
+          <h3 class="pt-3" data-aos="fade-up" data-aos-delay="100">
+            臺灣產業產值</br>與同期比較
+          </h3>
+          <p data-aos="fade-up" data-aos-delay="200">
+            產業季產值
+          </p>
+          <hr />
+          <p1 data-aos="fade-up" data-aos-delay="300">
+            針對半導體、顯示器、通訊、電子零組件、機械、汽機車、醫療器材、電子材料、石化、特化及新興能源等十一大產業之季產值進行比較。
+          </p1>
+          <div class="pt-1" data-aos="fade-up" data-aos-delay="400">
+            <update>2020.12.31 更新</update>
+          </div>
+        </div>
+        <div
+          class="col-md-8 pt-5 my-auto"
+          data-aos="fade-up"
+          data-aos-id="chart-1"
+        >
+          <cameo-divergent-stacked-bars
+            data="app-cameo-divergent-stacked-bars/data/data.csv"
+            meta="app-cameo-divergent-stacked-bars/data/meta.csv"
+          ></cameo-divergent-stacked-bars>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row pb-5 pt-5">
+        <div class="col-md-4 pt-5 my-auto">
+            <h4>Lesson 1 如何修改圖表標題？</h4>
+            <p>
+              修改 meta.csv 的標題
+            </p>
+            <p>
+              You can also consult the
+              <a href="docs" rel="noopener noreferrer">API docs</a> and
+              the
+              <a href="examples" rel="noopener noreferrer">examples</a>,
+              or — if you're impatient to start hacking on your machine
+              locally — the
+              <a
+                href="blog/the-easiest-way-to-get-started"
+                rel="noopener noreferrer"
+                >60-second quickstart</a
+              >.
+            </p>
+        </div>
+        <div class="col-md-8 pt-5 my-auto">
+            <div class="tab">
+                <!-- <button
+              class="tablinks"
+              onclick="openCity(event, 'London')"
+              id="defaultOpen"
+            >
+              Tutorial
+            </button> -->
+                <button
+                  class="tablinks"
+                  onclick="openCity(event, 'Tokyo')"
+                  id="defaultOpen"
+                >
+                  meta.csv
+                </button>
+                <button class="tablinks" onclick="openCity(event, 'Paris')">
+                  data.csv
+                </button>
+              </div>
+
+              <!-- Tab content -->
+              <div id="Tokyo" class="tabcontent">
+                <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                    <tr>
+                      <th title="Field #1">key</th>
+                      <th title="Field #2">value</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>圖表標題</td>
+                      <td>產業聚落</td>
+                    </tr>
+                    <tr>
+                      <td>資料來源</td>
+                      <td>資料來源: 工研院產科國際所</td>
+                    </tr>
+                    <tr>
+                      <td>產業聚落標籤字體</td>
+                      <td>bold</td>
+                    </tr>
+                    <tr>
+                      <td>產業聚落公司家數文字顏色</td>
+                      <td>#ed4e4e</td>
+                    </tr>
+                    <tr>
+                      <td>產業聚落產值文字大小</td>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <td>圖表下載檔名</td>
+                      <td>臺灣產業聚落</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div id="Paris" class="tabcontent">
+                <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                    <tr>
+                      <th title="Field #1">category</th>
+                      <th title="Field #2">latitude</th>
+                      <th title="Field #3">longitude</th>
+                      <th title="Field #4">description</th>
+                      <th title="Field #5">industry</th>
+                      <th title="Field #6">value</th>
+                      <th title="Field #7">count</th>
+                      <th title="Field #8">city</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>創新智樞總部及傳統聚落</td>
+                      <td align="right">25.0661064</td>
+                      <td align="right">121.481374</td>
+                      <td>
+                        國際經貿重鎮，扮演經濟創新領頭羊角色，串聯各縣市特殊元素，打造區域為主要經貿核心、宜居永續都會、國際企業首選
+                      </td>
+                      <td>
+                        證券金融、管顧、科學技術服務、資料及資訊服務、電腦設計、電子零組件製造、印刷、倉儲等
+                      </td>
+                      <td align="right">100949</td>
+                      <td align="right">470391</td>
+                      <td>臺北市、新北市、基隆市、宜蘭縣</td>
+                    </tr>
+                    <tr>
+                      <td>高科技聚落</td>
+                      <td align="right">24.55</td>
+                      <td align="right">121</td>
+                      <td>
+                        以客家文化為基底，電子與生技產業的科技元素為發展特色，為一既傳統又現代的生活圈
+                      </td>
+                      <td>資通訊、檢測、廢物處理、電子零組件等</td>
+                      <td align="right">66863</td>
+                      <td align="right">188785</td>
+                      <td>桃園市、新竹市、新竹縣、苗栗縣</td>
+                    </tr>
+                    <tr>
+                      <td>機械及生活傳產聚落</td>
+                      <td align="right">23.93</td>
+                      <td align="right">120.65</td>
+                      <td>
+                        國際級精密機械聚落，並具多元生活產業，近年串聯區域觀光與產業活動，成為中臺灣國際大都會
+                      </td>
+                      <td>
+                        機械、金屬製品、皮革、毛皮及其製品製造、其他運輸工具及其零件製造、家具、紡織、木竹等
+                      </td>
+                      <td align="right">50547</td>
+                      <td align="right">280427</td>
+                      <td>臺中市、南投縣、彰化縣</td>
+                    </tr>
+                    <tr>
+                      <td>農食基地</td>
+                      <td align="right">23.33360908</td>
+                      <td align="right">120.2444726</td>
+                      <td>
+                        有深厚傳統文化基底，扮演著臺灣大糧倉的角色，將來朝先進農業重要發展基地邁進
+                      </td>
+                      <td>農、牧業、食品製造、石油及煤製品、化學材料等</td>
+                      <td align="right">39077</td>
+                      <td align="right">183711</td>
+                      <td>嘉義市、嘉義縣、臺南市</td>
+                    </tr>
+                    <tr>
+                      <td>工業聚落親水聚落</td>
+                      <td align="right">22.6093283</td>
+                      <td align="right">120.3536056</td>
+                      <td>
+                        在既有能源、生技、金屬產業基礎上，發展海洋與陽光相關產業，發揮海洋文化特色，扮演臺灣重要的國際門戶
+                      </td>
+                      <td>化學材料、基本金屬、汙染整治、水上運輸、漁業等</td>
+                      <td align="right">39577</td>
+                      <td align="right">213612</td>
+                      <td>高雄市、屏東縣、澎湖縣</td>
+                    </tr>
+                    <tr>
+                      <td>天然資源觀光據點</td>
+                      <td align="right">23.33054</td>
+                      <td align="right">121.29746</td>
+                      <td>
+                        以「觀光美地、繁榮家園」為願景，為生態資源和休閒旅遊勝地，友善利用獨特的珍貴資源，為世代居民創造優質生活空間
+                      </td>
+                      <td>
+                        礦及土石、非金屬礦物製品、觀光(住宿服務、休閒服務)等
+                      </td>
+                      <td align="right">2324</td>
+                      <td align="right">30071</td>
+                      <td>花蓮縣、臺東縣</td>
+                    </tr>
+                    <tr>
+                      <td>生態觀光區</td>
+                      <td align="right">24.4322</td>
+                      <td align="right">118.3741</td>
+                      <td>
+                        對外為永續觀光勝地，對內為幸福宜居環境，善用在地特色推動智慧低碳觀光
+                      </td>
+                      <td>航空運輸、水上運輸、住宿服務等</td>
+                      <td align="right">493</td>
+                      <td align="right">4296</td>
+                      <td>金門縣、連江縣</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  document.getElementById("defaultOpen").click();
+</script>
