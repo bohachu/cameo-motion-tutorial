@@ -1,3 +1,7 @@
+== 20201227 1240 Bowen ==
+已經修改讓左下角課程文字 top align
+
+==
 001 拖拉四個檔案到狗三八根目錄
 app-cameo-divergent-stacked-bars
 img
